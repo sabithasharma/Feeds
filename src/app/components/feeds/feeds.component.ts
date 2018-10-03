@@ -91,8 +91,8 @@ export class FeedsComponent implements OnInit {
     } else {
       this.ifeeds = feeds.data.children;
     }
-    this.lastFeedId = feeds.data.children[feeds.data.children.length - 1].data.name;
-    this.firstFeedId = feeds.data.children[0].data.name;
+    this.lastFeedId = this.ifeeds[this.ifeeds.length - 1].data.name;
+    this.firstFeedId = this.ifeeds[0].data.name;
   }
 
   /**
