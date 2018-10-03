@@ -1,0 +1,13 @@
+<div class="commentDetails">
+  <div class="scoreDetails">
+    <i class="fas fa-arrow-circle-up"></i>
+    <span class="commentScore"> {{comment.data.score}} </span>
+    <i class="fas fa-arrow-circle-down" style="top: 40px"></i>
+  </div>
+  <div class="infoDetails">
+    <span class="authorName"> {{comment.data.author}}</span>
+    <span class="authorName"> {{getDateTime(comment.data.created_utc) }}</span>
+    <p class="commentBody"> {{comment.data.body}}</p>
+    <span class="dummyLink"> Reply </span> <span class="dummyLink"> Share </span>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.headerIcons {
+    position: absolute;
+    right: 30px;
+    top: 18px;
+}
+
+.fas {
+    padding-left: 20px;
+}
+
+img {
+    height: 50px;
+}

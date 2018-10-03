@@ -1,0 +1,12 @@
+<div *ngFor="let comment of dataList" class="treeList">
+    <div *ngIf="comment.parent_id==parentId" class="treeItem">
+        <div class="commentDetails">
+            <app-comment-details [comment]="comment"> </app-comment-details>
+            <div *ngIf="comment.data.replies && comment.data.replies.data.children && comment.data.replies.data.children.length > 0"
+                class="replyFollowingDetails">
+                <app-tree [parentId]="comment.data.replies.data.parent_id" [dataList]="comment.data.replies.data.children"></app-tree>
+            </div>
+        </div>
+
+    </div>
+</div>

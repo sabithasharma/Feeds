@@ -1,0 +1,40 @@
+.commentsSection .selfCommentSection,
+.commentsSection .othersCommentSection {
+    word-wrap: break-word;
+    max-height: 36em;
+    overflow: auto;
+    width: 30%;
+    float: left;
+    padding: 10px;
+}
+
+.commentsSection .othersCommentSection {
+    width: 70%;
+}
+
+.commentsListSection {
+    position: relative;
+    border-bottom: 1px solid #e4dada;
+    padding-top: 5px;
+}
+
+.replytDetails {
+    position: relative;
+    left: 5%;
+}
+
+.loading {
+    right: 25%;
+    position: absolute;
+    top: 1%;
+}
+
+.loading i {
+    font-size: 24px;
+}
+
+img {
+    width: 80%;
+}
+
+

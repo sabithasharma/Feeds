@@ -1,0 +1,21 @@
+.commentDetails {
+   padding-top: 2%;
+}
+.scoreDetails {
+    position: relative;
+}
+.scoreDetails .fas,
+.scoreDetails .commentScore {
+    position: absolute;
+    top: 3px;
+}
+
+.scoreDetails .commentScore {
+    top: 21px;
+    font-size: 12px;
+}
+
+.infoDetails {
+    padding-left: 7%;
+}
+

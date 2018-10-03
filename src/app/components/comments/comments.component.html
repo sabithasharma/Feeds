@@ -1,0 +1,40 @@
+<div *ngIf="selectedFeed" class="commentsSection">
+    <div class="selfCommentSection">
+        <p-card title="" subtitle="{{selectedFeed.data.title}}" styleClass="ui-card-shadow">
+            <p-header>
+                <img src="Card" src="{{selectedFeed.data.thumbnail}}">
+            </p-header>
+            <div class="ui-g-4">Author: </div>
+            <div class="ui-g-8">{{selectedFeed.data.author}}</div>
+            <p-panel header="Comments" *ngIf="selectedFeed.data.selftext" [toggleable]="true" [style]="{'margin-bottom':'20px'}">
+                {{selectedFeed.data.selftext }}
+            </p-panel>
+            <p *ngIf="!selectedFeed.data.selftext"> <br> No Comments found!! </p>
+
+        </p-card>
+    </div>
+    <div class="loading" *ngIf="loadingComments">
+        Loading.......
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+    <div *ngIf="noComments">
+        No Comments
+    </div>
+
+    <div *ngIf="comments" class="othersCommentSection">
+        <h3> Conversation ({{comments.length}})</h3>
+        <p-dataView #dv [value]="comments">
+
+            <ng-template let-comment pTemplate="listItem">
+                <div class="commentsListSection ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9" style="cursor:pointer">
+                    <app-comment-details [comment]="comment"> </app-comment-details>
+                    <div *ngIf="comment.data.replies && comment.data.replies.data.children && comment.data.replies.data.children.length > 0"
+                        class="replytDetails">
+                        <app-tree [parentId]="comment.data.replies.data.parent_id" [dataList]="comment.data.replies.data.children"></app-tree>
+
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+</div>

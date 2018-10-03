@@ -1,0 +1,37 @@
+.contentsArea {
+    position: absolute;
+    top: 100px;
+    bottom: 50px;
+    overflow:auto;
+}
+
+img {
+    border-radius : 50%;
+}
+
+.defaultImage {
+    width: 130px;
+    height: 130px;
+}
+
+.feedList {
+    border-bottom: 1px solid #e4dada;
+    padding: 0em;
+    border-bottom: 1px solid #d9d9d9;
+    cursor:pointer;
+}
+
+.paginationArea {
+    position: absolute;
+    top: 50px;
+    right: 5%;
+}
+
+.paginatorButtons {
+    float: right;
+    margin-right: 2em;
+}
+
+p-button {
+    margin-left: 10px;
+}

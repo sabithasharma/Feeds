@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+p-dialog .ui-dialog-draggable {
+        left: 20% !important;
+        max-width: 50%;
+}
+
+p-sidebar .ui-sidebar-lg {
+        height: 40em !important;
+}
+
+header, footer {
+        background-color: black;
+    height: 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 1024;
+    left: 0px;
+}
+
+header {
+        top: 0px;
+        background-color: white
+}
+
+header .headerIcons i .fas {
+        font-size: 48px; 
+        color: "white";
+        text-align: right;
+}
+footer {
+        bottom: 0px;
+        color: white;
+        text-align: center;
+        bottom: 0px;
+}
+
+.authorName {
+        color: #007ad9;
+        font-size: 0.9em;
+    }
+    
+.dummyLink {
+        color: grey;
+        font-size: 0.9em;
+        padding: 0.2em;
+}
+    
+.commentBody {
+        max-width: 90%;
+}
