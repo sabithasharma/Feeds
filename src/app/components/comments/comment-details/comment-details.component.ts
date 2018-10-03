@@ -15,7 +15,6 @@ export class CommentDetailsComponent {
    * @description returns date and time in readbale format
    */
   getDateTime(created_utc) {
-   console.log ( moment.unix(created_utc));
     return new Date(created_utc * 1000);
    // return moment.unix(created_utc).format('L'); // used if formatting is required
   }

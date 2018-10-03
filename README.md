@@ -1,8 +1,9 @@
 # Feeds
-### displays feeds, self text and comments
+### Displays feeds, self text and comments
 
-## Tools
-### Angular CLI	@angular/cli
+Pre-requisites to run in a machine.
+1. Angular cli shouldbe installed
+2. run the command "npm install" to load the dependencies
+3. run the command "ng serve --open"
 
-## Screenshots
-### Images are stored in assets folder
+Tested the working in Chrome And IE browser.
