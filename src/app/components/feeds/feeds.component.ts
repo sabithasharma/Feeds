@@ -4,7 +4,6 @@
  * @description - reads and displays the feed from reddit
  */
 import { Component, OnInit } from '@angular/core';
-import { IFeed } from '../../services/feed';
 import { FeedsService } from '../../services/feeds.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class FeedsComponent implements OnInit {
   firstFeedId;
   currentPage = 0;
   ifeedsFull;
-  selectedNumber = { name: '10' };
+  selectedNumber = { name: '5' };
   pageNumbers = [
     { name: '5' },
     { name: '10' },
@@ -31,26 +30,24 @@ export class FeedsComponent implements OnInit {
   ];
   constructor(private _ifeed: FeedsService) {
   }
+
+  /**
+   * @method ngOnInit
+   * @description initializes component
+   */
   ngOnInit() {
-    /* this._ifeed.getAllFeed()
-       .subscribe(feeds => {
-         this.ifeedsFull = feeds.data.children;
-         // this.ifeeds = feeds.data.children; to get all the feeds
-       });*/
     this._ifeed.getAllFeed()
       .subscribe(feeds => {
         this.updateFeedsData(feeds);
       });
   }
 
-  onRowUpdate(event: any) {
+  /**
+   * @method onRowUpdate
+   * @description triggered when no of rows in a page changes
+   */
+  private onRowUpdate = (event: any): void => {
     console.log(event.value);
-    /*if (this.selectedNumber.name > this.ifeeds.length) {
-      this.firstFeedId = this.ifeeds[0].data.name;
-      this.lastFeedId = '';
-    } else if (this.selectedNumber.name < this.ifeeds.length) {
-      this.firstFeedId = this.ifeeds[0].data.name;
-    }*/
     this.firstFeedId = this.ifeeds[0].data.id;
     this._ifeed.getNextFeeds(this.selectedNumber.name, this.firstFeedId)
         .subscribe(feeds => {
@@ -58,7 +55,11 @@ export class FeedsComponent implements OnInit {
     });
   }
 
-  loadPrev() {
+  /**
+   * @method loadPrev
+   * @description load previous items
+   */
+  private loadPrev = (): void => {
     this._ifeed.getPrevFeeds(this.selectedNumber.name, this.firstFeedId)
       .subscribe(feeds => {
         if (feeds.data.dist === 0 && feeds.data.children.length === 0) {
@@ -69,14 +70,22 @@ export class FeedsComponent implements OnInit {
       });
   }
 
-  loadNext() {
+  /**
+   * @method loadPrev
+   * @description load next items
+   */
+  private loadNext = (): void => {
     this._ifeed.getNextFeeds(this.selectedNumber.name, this.lastFeedId)
       .subscribe(feeds => {
         this.updateFeedsData(feeds);
       });
   }
 
-  updateFeedsData(feeds) {
+  /**
+   * @method updateFeedsData
+   * @description updates the feed list
+   */
+  private updateFeedsData = (feeds: any): void => {
     if (feeds.data.children.length > this.selectedNumber.name) {
       this.ifeeds = feeds.data.children.splice(0, this.selectedNumber.name);
     } else {
@@ -86,7 +95,11 @@ export class FeedsComponent implements OnInit {
     this.firstFeedId = feeds.data.children[0].data.name;
   }
 
-  clearFeedsData() {
+  /**
+   * @method clearFeedsData
+   * @description clears the feed list
+   */
+  private clearFeedsData = (): void => {
     this.ifeeds = [];
     // this.firstFeedId = '';
      this.lastFeedId = '';
@@ -95,7 +108,7 @@ export class FeedsComponent implements OnInit {
    * @method updateSelectedFeed
    * @description updates the selection of the feed
    */
-  updateSelectedFeed(feed: any) {
+  private updateSelectedFeed = (feed: any): void => {
     this.selectedFeed = feed;
   }
 
@@ -103,8 +116,9 @@ export class FeedsComponent implements OnInit {
    * @method getDateTime
    * @description return date in readable format
    */
-  getDateTime(created_utc) {
+  private getDateTime = (created_utc: number): Date => {
     return new Date(created_utc * 1000);
+    // return moment.unix(created_utc).format('L'); // used if formatting is required
   }
 
 }

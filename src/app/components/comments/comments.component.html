@@ -2,14 +2,24 @@
     <div class="selfCommentSection">
         <p-card title="" subtitle="{{selectedFeed.data.title}}" styleClass="ui-card-shadow">
             <p-header>
-                <img src="Card" src="{{selectedFeed.data.thumbnail}}">
+                <!--img src="Card" src="{{selectedFeed.data.thumbnail}}"-->
+                <img *ngIf="selectedFeed.data.thumbnail != 'self' && selectedFeed.data.thumbnail != 'default'" src="{{selectedFeed.data.thumbnail}}">
+                <img class="defaultImage" *ngIf="selectedFeed.data.thumbnail == 'self' || selectedFeed.data.thumbnail == 'default'"
+                    src="./../../../assets/default.png">
             </p-header>
             <div class="ui-g-4">Author: </div>
             <div class="ui-g-8">{{selectedFeed.data.author}}</div>
-            <p-panel header="Comments" *ngIf="selectedFeed.data.selftext" [toggleable]="true" [style]="{'margin-bottom':'20px'}">
-                {{selectedFeed.data.selftext }}
+            <i *ngIf="!allowSelfEdit" class="fas fa fa-edit" (click)=allowEditing()></i>
+            <i *ngIf="allowSelfEdit" class="fas fa fa-check" (click)=disableEditing()></i>
+            <p-panel header="Self Text" *ngIf="selectedFeed.data.selftext" [toggleable]="true" [style]="{'margin-bottom':'20px'}">
+                <p *ngIf="allowSelfEdit" contenteditable="true"> {{selectedFeed.data.selftext }} </p>
+                <p *ngIf="!allowSelfEdit" contenteditable="false" contenteditable="allowSelfEdit">
+                    {{selectedFeed.data.selftext }} </p>
             </p-panel>
-            <p *ngIf="!selectedFeed.data.selftext"> <br> No Comments found!! </p>
+            <p contenteditable="true" *ngIf="!selectedFeed.data.selftext && allowSelfEdit">
+                <p contenteditable="false" *ngIf="!selectedFeed.data.selftext && !allowSelfEdit">
+
+                    <br> No Comments found!! </p>
 
         </p-card>
     </div>

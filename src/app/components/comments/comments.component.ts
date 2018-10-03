@@ -18,7 +18,7 @@ export class CommentsComponent implements OnInit {
   loadingComments;
   noComments;
   redditUrl = 'https://www.reddit.com';
-
+  allowSelfEdit = false;
   constructor(private _commentsService: CommentsService) { }
 
   ngOnInit() {
@@ -29,15 +29,20 @@ export class CommentsComponent implements OnInit {
         .subscribe(comments => {
           this.comments = comments[1].data.children;
           this.hideLoading();
-        }).fail(fail => {
-          this.noComments = true;
-          this.loadingComments = false;
         });
     }
   }
 
-  hideLoading() {
+  private hideLoading = () => {
     this.loadingComments = false;
     this.noComments = false;
+  }
+
+  private allowEditing = (): void => {
+    this.allowSelfEdit = true;
+  }
+
+  private disableEditing = (): void => {
+    this.allowSelfEdit = false;
   }
 }

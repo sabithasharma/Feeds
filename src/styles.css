@@ -33,18 +33,3 @@ footer {
         text-align: center;
         bottom: 0px;
 }
-
-.authorName {
-        color: #007ad9;
-        font-size: 0.9em;
-    }
-    
-.dummyLink {
-        color: grey;
-        font-size: 0.9em;
-        padding: 0.2em;
-}
-    
-.commentBody {
-        max-width: 90%;
-}

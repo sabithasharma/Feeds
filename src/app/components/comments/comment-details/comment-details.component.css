@@ -19,3 +19,24 @@
     padding-left: 7%;
 }
 
+.authorName {
+    color: #007ad9;
+    font-size: 0.8em;
+}
+
+.commentDate {
+    font-size: 0.8em;
+    color: #d3cdcf;
+    padding-left: 5%;
+}
+
+.dummyLink {
+    color: grey;
+    font-size: 0.9em;
+    padding: 0.2em;
+}
+
+.commentBody {
+    max-width: 90%;
+    font-size: 0.9em;
+}

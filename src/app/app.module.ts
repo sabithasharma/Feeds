@@ -14,8 +14,7 @@ import { PanelModule } from 'primeng/panel';
 import { FormsModule } from '@angular/forms';
 import { SidebarModule } from 'primeng/sidebar';
 import { CardModule } from 'primeng/card';
-import {PaginatorModule} from 'primeng/paginator';
-import {ButtonModule} from 'primeng/button';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -46,7 +45,6 @@ import { CommentDetailsComponent } from './components/comments/comment-details/c
     FormsModule,
     SidebarModule,
     CardModule,
-    PaginatorModule,
     ButtonModule
   ],
   providers: [],
