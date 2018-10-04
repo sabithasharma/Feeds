@@ -25,21 +25,21 @@
                 </div>
                 <div class="ui-g-12 ui-md-8 feed-details">
                     <div class="ui-g">
-                        <div class="ui-g-2 ui-sm-6">title: </div>
+                        <div class="ui-g-2 ui-sm-6">Title: </div>
                         <div class="ui-g-10 ui-sm-6"><b>{{feed.data.title}}</b></div>
 
-                        <div class="ui-g-2 ui-sm-6">author: </div>
+                        <div class="ui-g-2 ui-sm-6">Author: </div>
                         <div class="ui-g-10 ui-sm-6"><b>{{feed.data.author}}</b></div>
 
                         <div class="ui-g-2 ui-sm-6">No.Comments: </div>
                         <div class="ui-g-10 ui-sm-6"><b>{{feed.data.num_comments}}</b></div>
 
-                        <div class="ui-g-2 ui-sm-6">created: </div>
+                        <div class="ui-g-2 ui-sm-6">Created: </div>
                         <div class="ui-g-10 ui-sm-6"><b>{{getDateTime(feed.data.created) }}</b></div>
-                        <div class="ui-g-2 ui-sm-6">score: </div>
+                        <div class="ui-g-2 ui-sm-6">Score: </div>
                         <div class="ui-g-10 ui-sm-6"><b>{{feed.data.score}}</b></div>
-                        <div class="ui-g-2 ui-sm-6"> permalink: </div>
-                        <a href="#"> {{feed.data.permalink}} </a>
+                        <div class="ui-g-2 ui-sm-6"> Permalink: </div>
+                        <a href="http://www.reddit.com{{feed.data.permalink}}"> {{feed.data.permalink}} </a>
                     </div>
                 </div>
             </div>
