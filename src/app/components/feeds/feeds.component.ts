@@ -26,7 +26,6 @@ export class FeedsComponent implements OnInit {
     { name: '10' },
     { name: '25' }
   ];
-  nextButtonClicked = false;
   constructor(private _ifeed: FeedsService) {
   }
 
@@ -51,27 +50,6 @@ export class FeedsComponent implements OnInit {
       .subscribe(feeds => {
         this.updateFeedsData(feeds);
       }); // refetches the data when toggled the number of rows
-
-    /****logic for updating the page with the current entry*****/
-
-    /*  let feedId;
-     if (Number(this.previousNumber) <= Number(this.selectedNumber.name)) {
-       if (this.previousFeed && !this.nextButtonClicked) {
-         this._ifeed.getAllFeed()
-           .subscribe(feeds => {
-             this.updateFeedsData(feeds);
-           });
-           return;
-       }
-     }
-     if (this.previousFeed && this.nextButtonClicked) {
-       feedId = this.previousFeed[this.previousFeed.length - 1].data.name;
-     this._ifeed.getNextFeeds(this.selectedNumber.name, feedId)
-       .subscribe(feeds => {
-         this.updateFeedsData(feeds);
-       });
-     }
-     this.previousNumber = this.selectedNumber.name;*/
   }
 
   /**
@@ -94,7 +72,6 @@ export class FeedsComponent implements OnInit {
    * @description load next items
    */
   private loadNext = (): void => {
-    this.nextButtonClicked = true;
     this._ifeed.getNextFeeds(this.selectedNumber.name, this.lastFeedId)
       .subscribe(feeds => {
         this.updateFeedsData(feeds);
@@ -125,7 +102,6 @@ export class FeedsComponent implements OnInit {
    */
   private clearFeedsData = (): void => {
     this.ifeeds = [];
-    // this.firstFeedId = '';
     this.lastFeedId = '';
   }
   /**
