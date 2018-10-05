@@ -1,20 +1,15 @@
 <div class = "paginationArea">
     <div class = "paginatorButtons">
-            <p-button icon="pi pi-caret-left" label="Prev" (click) = "loadPrev()"></p-button>
-            <p-button icon="pi pi-caret-right" label="Next" (click) = "loadNext()"></p-button>
+            <p-button icon="pi pi-caret-left" label="Load Prev" (click) = "loadPrev()"></p-button>
+            <p-button icon="pi pi-caret-right" label="Load Next" (click) = "loadNext()"></p-button>
     </div>
-    <p-dropdown [options]="pageNumbers" (onChange) = "onRowUpdate($event)" [(ngModel)]="selectedNumber" optionLabel="name" [showClear]="false"></p-dropdown>
 </div>
 <div class="contentsArea">
     <p-sidebar *ngIf="selectedFeed" styleClass="ui-sidebar-lg" position="bottom" [(visible)]="SidebarDisplay" (onHide)="selectedFeed = false">
         <app-comments [selectedFeed]="selectedFeed" [commentsLink]="selectedFeed.data.permalink"> </app-comments>
     </p-sidebar>
-    <!--p-paginator [rows]="10" totalRecords= {{ifeedsFull.length}} [rowsPerPageOptions]="[5,10,25]" (onPageChange)="paginate($event)"></p-paginator-->
-    <!--p-dataView #dv [value]="ifeeds" [paginator]="true" [rows]="10"  [rowsPerPageOptions]="[5,10,25]" paginatorPosition="top"-->
+    <p-dataView #dv [value]="ifeeds" [paginator]="true" [rows]="10"  [rowsPerPageOptions]="[5,10,25]" paginatorPosition="top">
     
-    
-    
-    <p-dataView #dv [value]="ifeeds">
         <ng-template let-feed pTemplate="listItem">
             <div class="ui-g feedList" (click)="updateSelectedFeed(feed); SidebarDisplay = true">
                 <div class="ui-g-12 ui-md-3" style="text-align:center">

@@ -19,13 +19,7 @@ export class FeedsComponent implements OnInit {
   lastFeedId;
   firstFeedId;
   selectedNumber = { name: this.ROW_LIMIT };
-  previousNumber = this.selectedNumber.name;
-  previousFeed;
-  pageNumbers = [
-    { name: '5' },
-    { name: '10' },
-    { name: '25' }
-  ];
+  MAX_DATA = 25;
   constructor(private _ifeed: FeedsService) {
   }
 
@@ -41,23 +35,11 @@ export class FeedsComponent implements OnInit {
   }
 
   /**
-   * @method onRowUpdate
-   * @description triggered when no of rows in a page changes
-   */
-  private onRowUpdate = (event: any): void => {
-
-    this._ifeed.getAllFeed()
-      .subscribe(feeds => {
-        this.updateFeedsData(feeds);
-      }); // refetches the data when toggled the number of rows
-  }
-
-  /**
    * @method loadPrev
    * @description load previous items
    */
   private loadPrev = (): void => {
-    this._ifeed.getPrevFeeds(this.selectedNumber.name, this.firstFeedId)
+    this._ifeed.getPrevFeeds(this.MAX_DATA, this.firstFeedId)
       .subscribe(feeds => {
         if (feeds.data.dist === 0 && feeds.data.children.length === 0) {
           this.clearFeedsData();
@@ -72,7 +54,7 @@ export class FeedsComponent implements OnInit {
    * @description load next items
    */
   private loadNext = (): void => {
-    this._ifeed.getNextFeeds(this.selectedNumber.name, this.lastFeedId)
+    this._ifeed.getNextFeeds(this.MAX_DATA, this.lastFeedId)
       .subscribe(feeds => {
         this.updateFeedsData(feeds);
       });
@@ -83,14 +65,10 @@ export class FeedsComponent implements OnInit {
    * @description updates the feed list
    */
   private updateFeedsData = (feeds: any): void => {
-    this.previousFeed = this.ifeeds;
-    if (feeds.data.children.length > this.selectedNumber.name) {
-      this.ifeeds = feeds.data.children.splice(0, this.selectedNumber.name);
+    if (feeds.data.children.length > this.MAX_DATA) {
+      this.ifeeds = feeds.data.children.slice(0, this.MAX_DATA);
     } else {
       this.ifeeds = feeds.data.children;
-    }
-    if (!this.previousFeed) {
-      this.previousFeed = this.ifeeds;
     }
     this.lastFeedId = this.ifeeds[this.ifeeds.length - 1].data.name;
     this.firstFeedId = this.ifeeds[0].data.name;
