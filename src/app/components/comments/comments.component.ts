@@ -32,16 +32,28 @@ export class CommentsComponent implements OnInit {
         });
     }
   }
+  /**
+  * @method hideLoading
+  * @description hides the loading symbol
+  */
 
   private hideLoading = () => {
     this.loadingComments = false;
     this.noComments = false;
   }
 
+  /**
+   * @method allowEditing
+   * @description allows self text editing field
+   */
   private allowEditing = (): void => {
     this.allowSelfEdit = true;
   }
 
+  /**
+   * @method disableEditing
+   * @description disables self text editing field
+   */
   private disableEditing = (): void => {
     this.allowSelfEdit = false;
   }
