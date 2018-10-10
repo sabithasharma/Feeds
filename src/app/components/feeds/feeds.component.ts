@@ -38,7 +38,7 @@ export class FeedsComponent implements OnInit {
    * @method loadPrev
    * @description load previous items
    */
-  private loadPrev = (): void => {
+  public loadPrev = (): void => {
     this._ifeed.getPrevFeeds(this.MAX_DATA, this.firstFeedId)
       .subscribe(feeds => {
         if (feeds.data.dist === 0 && feeds.data.children.length === 0) {
@@ -53,7 +53,7 @@ export class FeedsComponent implements OnInit {
    * @method loadPrev
    * @description load next items
    */
-  private loadNext = (): void => {
+  public loadNext = (): void => {
     this._ifeed.getNextFeeds(this.MAX_DATA, this.lastFeedId)
       .subscribe(feeds => {
         this.updateFeedsData(feeds);

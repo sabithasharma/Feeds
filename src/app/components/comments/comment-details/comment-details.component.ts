@@ -7,7 +7,7 @@ import * as moment from 'moment';
   styleUrls: ['./comment-details.component.css']
 })
 export class CommentDetailsComponent {
-  @Input() comment: string;
+  @Input() comment: any;
   constructor() { }
 
   /**
